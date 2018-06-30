@@ -1,6 +1,31 @@
 /**
  * Common database helper functions.
  */
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js', { scope: '' })
+    .then(function (reg) {
+      // registration worked
+      console.log('Registration succeeded. Scope is ' + reg.scope);
+    }).catch(function (error) {
+      // registration failed
+      console.log(error);
+    });
+}
+
+if (navigator.serviceWorker) {
+  navigator.serviceWorker
+    .register("sw.js")
+    .then(function(reg) {
+      console.log("Service Worker has been installed");
+     
+    })
+    .catch(function(err) {
+      console.log("Service Worker has not been installed");
+    });
+}
+
+
 class DBHelper {
 
   /**
